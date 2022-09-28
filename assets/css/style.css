@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --primary: #44e9ff;
+    --secondary: #497980;
+    --tertiary: rgb(192, 246, 253);
+    --grey: #333;
+    font-size: 62.5%;
+  }
+  
+  body {
+    background: #ededed;
+    color: var(--grey);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  header {
+    background: var(--secondary);
+    padding: 30px 25px;
+    border-bottom: 5px solid var(--primary);
+  }
+
+  .page-title {
+    color: var(--primary);
+    margin-bottom: 5px;
+    margin-top: 0;
+    font-size: 4.5rem;
+  }
+
+  .quiz-box {
+    background-color: var(--tertiary);
+    border-radius: 15px;
+    box-shadow: 0 0 10px 2px var(--grey);
+    width:800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 25px auto;
+    width: 75%;
+  }
+
+  .quiz-header{
+    padding: 4rem;
+}
+#timer {
+    display: flex;
+    justify-content: center;
+  }
+  #timeout {
+    text-decoration: red;
+  }
+  .scores {
+    display: flex;
+    justify-content: center;
+  }
+
+  p {
+    display: inline;
+    font-size: 40px;
+    margin-top: 0px;
+  }
+
+  h2{
+    padding: 1rem;
+    text-align: center;
+    margin: 0;
+  }
+
+  ul{
+    list-style-type: none;
+    padding: 0;
+  }
+
+  ul li{
+    font-size: 1.2rem;
+    margin: 1rem 0;
+  }
+
+  ul li label{
+    cursor: pointer;
+  }
+
+  button {
+    outline: none;
+    border: none;
+    display: block;
+    padding: 10px 15px;
+    background: var(--primary);
+    font-size: 2.2rem;
+    border-radius: 12px;
+    position: relative;
+    top: -3px;
+    box-shadow: 0 3px var(--grey);
+  }

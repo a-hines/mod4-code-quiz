@@ -18,3 +18,4 @@ WHEN the game is over
 THEN I can save my initials and score
 
 Screenshot of deployed app: 
+![deployed](https://user-images.githubusercontent.com/99751726/193463127-4df35509-7fc5-47c3-a1fe-6abbc6d1b174.jpg)

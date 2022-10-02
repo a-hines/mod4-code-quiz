@@ -90,3 +90,58 @@ const quizQuestions = [
       correct: "b",
     },
   ];
+
+  var quiz = document.getElementById("quiz");
+  var answerEls = document.querySelectorAll(".answer");
+  var questionEl = document.getElementById("question");
+  var a_text = document.getElementById("a_text");
+  var b_text = document.getElementById("b_text");
+  var c_text = document.getElementById("c_text");
+  var d_text = document.getElementById("d_text");
+  var submitBtn = document.getElementById("submit");
+
+  startQuiz();
+
+  function startQuiz() {
+    submitBtn.onclick = buttonClick;
+    questionEl.innertext = "Welcome to Code Quiz!";
+    hideAnswers();
+    submitBtn.innerText = "Begin";
+  }
+
+  function loadQuestions() {
+    deselectAnswers();
+
+    var currentQuizData = quizData[currentQuestion];
+
+    questionEl.innerText = currentQuizData.question;
+    a_text.innerText = currentQuizData.a;
+    b_text.innerText = currentQuizData.b;
+    c_text.innerText = currentQuizData.c;
+    d_text.innerText = currentQuizData.d;
+  }
+
+  function hideAnswers() {
+    a_text.innerText = "";
+    b_text.innerText = "";
+    c_text.innerText = "";
+    d_text.innerText = "";
+    answerEls.forEach((answerElement) => (answerElement.hidden = true));
+  }
+
+  function deselectAnswers() {
+    answerEls.forEach((answerEl) => {
+      answerEl.checked = false;
+      if (answerEl.hidden) answerEl.hidden = false
+    });
+  }
+
+  function answerSelected() {
+    var answer;
+    answerEls.forEach((answerEl) => {
+      if (answerEl.checked) {
+        answer = answerEl.id;
+      }
+    });
+    return answer;
+  }

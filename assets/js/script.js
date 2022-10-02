@@ -99,26 +99,101 @@ const quizQuestions = [
   var c_text = document.getElementById("c_text");
   var d_text = document.getElementById("d_text");
   var submitBtn = document.getElementById("submit");
+  var timer = document.getElementById("timer");
+  var min = document.getElementById("min");
+  var sec = document.getElementById("sec");
+
+  var currentQuestion = 0;
+  var score = 0;
+
+  var started = false;
+  var timeoutTime;
+
+  var maxHighScores = 10;
+  var highScores;
+  var lowestScore; 
+  var savedHighScore = false;
 
   startQuiz();
 
   function startQuiz() {
     submitBtn.onclick = buttonClick;
-    questionEl.innertext = "Welcome to Code Quiz!";
+    questionEl.innerText = "Welcome to Code Quiz!";
     hideAnswers();
     submitBtn.innerText = "Begin";
   }
 
-  function loadQuestions() {
+  function deductTime() {
+    timeoutTime = timeoutTime - 10000;
+  }
+
+  function buttonClick() {
+    const answer = answerSelected();
+    if (!started) {
+      started = true;
+      submitBtn.innerText = "Submit";
+      startTheTimer();
+      loadQuestion();
+    }
+    if (answer) {
+      if (answer === quizQuestions[currentQuestion].correct) {
+        score++;
+      
+      } else {
+        deductTime();
+      }
+  
+      currentQuestion++;
+  
+      if (currentQuestion < quizQuestions.length) {
+        loadQuestion();
+      } else {
+        endQuiz();
+      }
+    }
+  }
+
+  function startTheTimer() {
+    let minutes = 5;
+    let seconds = 0;
+    let lag = 2000;
+    timeoutTime = new Date().getTime() + minutes * 60000 + seconds * 1000 + lag;
+  
+    let myfunc = setInterval(function () {
+      let now = new Date().getTime();
+      let timeleft = timeoutTime - now;
+  
+      let displayMinutes = Math.floor(
+        (timeleft % (1000 * 60 * 60)) / (1000 * 60)
+      );
+      if (displayMinutes < 10) {
+        displayMinutes = "0" + displayMinutes;
+      }
+      let displaySeconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+      if (displaySeconds < 10) {
+        displaySeconds = " 0" + displaySeconds;
+      }
+  
+      mins.innerHTML = displayMinutes + " : ";
+      secs.innerHTML = displaySeconds;
+  
+      if (timeleft <= 0) {
+        clearInterval(myfunc);
+        endQuiz(true);
+      }
+    }, 1000);
+  }
+
+  function loadQuestion() {
     deselectAnswers();
 
-    var currentQuizData = quizData[currentQuestion];
+    var currentQuizQuestion = quizQuestions[currentQuestion];
 
-    questionEl.innerText = currentQuizData.question;
-    a_text.innerText = currentQuizData.a;
-    b_text.innerText = currentQuizData.b;
-    c_text.innerText = currentQuizData.c;
-    d_text.innerText = currentQuizData.d;
+    questionEl.innerText = currentQuizQuestion.question;
+    a_text.innerText = currentQuizQuestion.a;
+    b_text.innerText = currentQuizQuestion.b;
+    c_text.innerText = currentQuizQuestion.c;
+    d_text.innerText = currentQuizQuestion.d;
   }
 
   function hideAnswers() {

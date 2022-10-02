@@ -3,22 +3,22 @@
   }
   
   :root {
-    --primary: #44e9ff;
-    --secondary: #497980;
-    --tertiary: rgb(192, 246, 253);
-    --grey: #333;
+    --primary: #42b883;
+    --secondary: #347474;
+    --tertiary: #35495e;
+    --grey: #393d42;
     font-size: 62.5%;
   }
   
   body {
     background: #ededed;
-    color: var(--grey);
+    color: var(--tertiary);
     margin: 0;
     padding: 0;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Courier New', Courier, monospace;
   }
   
   header {
@@ -28,10 +28,26 @@
   }
 
   .page-title {
-    color: var(--primary);
+    color: var(--grey);
     margin-bottom: 5px;
     margin-top: 0;
     font-size: 4.5rem;
+  }
+
+  .high-score {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin-bottom: 5px;
+    margin-top: 0;
+  }
+
+  .high-score a {
+    color: var(--tertiary);
+    font-size: 2.5rem;
+    text-decoration: none;
   }
 
   .quiz-box {
@@ -55,9 +71,10 @@
 #timer {
     display: flex;
     justify-content: center;
+    color: var(--primary);
   }
   #timeout {
-    text-decoration: red;
+    text-decoration: #ff7367;
   }
   .scores {
     display: flex;
@@ -74,6 +91,8 @@
     padding: 1rem;
     text-align: center;
     margin: 0;
+    color: var(--primary);
+    font-size: 4rem;
   }
 
   ul{
@@ -82,12 +101,14 @@
   }
 
   ul li{
-    font-size: 1.2rem;
+    font-size: 3.2rem;
     margin: 1rem 0;
   }
 
   ul li label{
     cursor: pointer;
+    color: var(--secondary);
+    font-size: 3rem;
   }
 
   button {
